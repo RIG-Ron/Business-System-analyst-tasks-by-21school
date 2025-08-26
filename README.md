@@ -1,6 +1,6 @@
 # Business-System-analyst-tasks-by-21school
 This task list outlines a comprehensive and logically structured Business Systems Analysis (BSA) project workflow. The progression from foundational elements (Stakeholders, Requirements) to detailed design (Domains, UI, Diagrams) and finally to technical integration (REST, SOAP) demonstrates a complete understanding of the software development lifecycle from an analyst's perspective.
-Task List:
+## Task List:
 
 # BSA00_Decomposition
 # BSA01_Stakeholders
