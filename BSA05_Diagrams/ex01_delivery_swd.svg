@@ -1,0 +1,148 @@
+<svg viewBox="0 0 1400 1000" xmlns="http://www.w3.org/2000/svg">
+  <!-- Title -->
+  <text x="700" y="30" text-anchor="middle" font-size="20" font-weight="bold" fill="#2c3e50">
+    Swimlane диаграмма: Процесс доставки заказа
+  </text>
+  
+  <!-- Swim lanes headers -->
+  <rect x="50" y="60" width="120" height="900" fill="#ecf0f1" stroke="#34495e" stroke-width="2"/>
+  <text x="110" y="85" text-anchor="middle" font-size="14" font-weight="bold">Поставщик</text>
+  
+  <rect x="170" y="60" width="120" height="900" fill="#fdf2e9" stroke="#34495e" stroke-width="2"/>
+  <text x="230" y="85" text-anchor="middle" font-size="14" font-weight="bold">Оператор</text>
+  
+  <rect x="290" y="60" width="120" height="900" fill="#e8f8f5" stroke="#34495e" stroke-width="2"/>
+  <text x="350" y="85" text-anchor="middle" font-size="14" font-weight="bold">Диспетчер</text>
+  
+  <rect x="410" y="60" width="120" height="900" fill="#eaf2f8" stroke="#34495e" stroke-width="2"/>
+  <text x="470" y="85" text-anchor="middle" font-size="14" font-weight="bold">Курьер</text>
+  
+  <rect x="530" y="60" width="120" height="900" fill="#f4e6ff" stroke="#34495e" stroke-width="2"/>
+  <text x="590" y="85" text-anchor="middle" font-size="14" font-weight="bold">Клиент</text>
+  
+  <rect x="650" y="60" width="120" height="900" fill="#fff2e6" stroke="#34495e" stroke-width="2"/>
+  <text x="710" y="85" text-anchor="middle" font-size="14" font-weight="bold">Бухгалтерия</text>
+  
+  <!-- Start -->
+  <circle cx="110" cy="120" r="15" fill="#27ae60" stroke="#1e8449" stroke-width="2"/>
+  <text x="135" y="125" font-size="10">Начало</text>
+  
+  <!-- Process steps -->
+  <!-- Step 1: Supplier provides order info -->
+  <rect x="70" y="150" width="80" height="40" fill="#3498db" stroke="#2980b9" stroke-width="2" rx="5"/>
+  <text x="110" y="168" text-anchor="middle" font-size="10" fill="white">Передача</text>
+  <text x="110" y="180" text-anchor="middle" font-size="10" fill="white">информации</text>
+  
+  <!-- Step 2: Operator enters order -->
+  <rect x="190" y="220" width="80" height="40" fill="#e67e22" stroke="#d35400" stroke-width="2" rx="5"/>
+  <text x="230" y="238" text-anchor="middle" font-size="10" fill="white">Ввод заказа</text>
+  <text x="230" y="250" text-anchor="middle" font-size="10" fill="white">в систему</text>
+  
+  <!-- Step 3: Dispatcher monitors -->
+  <rect x="310" y="290" width="80" height="40" fill="#1abc9c" stroke="#16a085" stroke-width="2" rx="5"/>
+  <text x="350" y="308" text-anchor="middle" font-size="10" fill="white">Мониторинг</text>
+  <text x="350" y="320" text-anchor="middle" font-size="10" fill="white">заказов</text>
+  
+  <!-- Step 4: Courier selects order -->
+  <rect x="430" y="360" width="80" height="40" fill="#9b59b6" stroke="#8e44ad" stroke-width="2" rx="5"/>
+  <text x="470" y="378" text-anchor="middle" font-size="10" fill="white">Выбор и</text>
+  <text x="470" y="390" text-anchor="middle" font-size="10" fill="white">бронирование</text>
+  
+  <!-- Step 5: Courier picks up order -->
+  <rect x="430" y="430" width="80" height="40" fill="#9b59b6" stroke="#8e44ad" stroke-width="2" rx="5"/>
+  <text x="470" y="448" text-anchor="middle" font-size="10" fill="white">Получение</text>
+  <text x="470" y="460" text-anchor="middle" font-size="10" fill="white">заказа</text>
+  
+  <!-- Step 6: Courier delivers -->
+  <rect x="430" y="500" width="80" height="40" fill="#9b59b6" stroke="#8e44ad" stroke-width="2" rx="5"/>
+  <text x="470" y="518" text-anchor="middle" font-size="10" fill="white">Доставка</text>
+  <text x="470" y="530" text-anchor="middle" font-size="10" fill="white">клиенту</text>
+  
+  <!-- Step 7: Client receives order -->
+  <rect x="550" y="570" width="80" height="40" fill="#f39c12" stroke="#e67e22" stroke-width="2" rx="5"/>
+  <text x="590" y="588" text-anchor="middle" font-size="10" fill="white">Получение</text>
+  <text x="590" y="600" text-anchor="middle" font-size="10" fill="white">заказа</text>
+  
+  <!-- Step 8: Courier marks delivery -->
+  <rect x="430" y="640" width="80" height="40" fill="#9b59b6" stroke="#8e44ad" stroke-width="2" rx="5"/>
+  <text x="470" y="658" text-anchor="middle" font-size="10" fill="white">Отметка о</text>
+  <text x="470" y="670" text-anchor="middle" font-size="10" fill="white">доставке</text>
+  
+  <!-- Step 9: Accounting calculates with supplier -->
+  <rect x="670" y="710" width="80" height="40" fill="#34495e" stroke="#2c3e50" stroke-width="2" rx="5"/>
+  <text x="710" y="728" text-anchor="middle" font-size="10" fill="white">Расчет с</text>
+  <text x="710" y="740" text-anchor="middle" font-size="10" fill="white">поставщиком</text>
+  
+  <!-- Step 10: Accounting calculates courier payment -->
+  <rect x="670" y="780" width="80" height="40" fill="#34495e" stroke="#2c3e50" stroke-width="2" rx="5"/>
+  <text x="710" y="798" text-anchor="middle" font-size="10" fill="white">Расчет</text>
+  <text x="710" y="810" text-anchor="middle" font-size="10" fill="white">курьеру</text>
+  
+  <!-- End -->
+  <circle cx="470" cy="880" r="15" fill="#e74c3c" stroke="#c0392b" stroke-width="2"/>
+  <text x="495" y="885" font-size="10">Конец</text>
+  
+  <!-- Arrows -->
+  <defs>
+    <marker id="arrowblue" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#2980b9"/>
+    </marker>
+  </defs>
+  
+  <!-- Flow arrows -->
+  <line x1="110" y1="135" x2="110" y2="150" stroke="#2980b9" stroke-width="2" marker-end="url(#arrowblue)"/>
+  <line x1="110" y1="190" x2="230" y2="220" stroke="#2980b9" stroke-width="2" marker-end="url(#arrowblue)"/>
+  <line x1="230" y1="260" x2="350" y2="290" stroke="#2980b9" stroke-width="2" marker-end="url(#arrowblue)"/>
+  <line x1="350" y1="330" x2="470" y2="360" stroke="#2980b9" stroke-width="2" marker-end="url(#arrowblue)"/>
+  <line x1="470" y1="400" x2="470" y2="430" stroke="#2980b9" stroke-width="2" marker-end="url(#arrowblue)"/>
+  <line x1="470" y1="470" x2="470" y2="500" stroke="#2980b9" stroke-width="2" marker-end="url(#arrowblue)"/>
+  <line x1="470" y1="540" x2="590" y2="570" stroke="#2980b9" stroke-width="2" marker-end="url(#arrowblue)"/>
+  <line x1="590" y1="610" x2="470" y2="640" stroke="#2980b9" stroke-width="2" marker-end="url(#arrowblue)"/>
+  <line x1="470" y1="680" x2="710" y2="710" stroke="#2980b9" stroke-width="2" marker-end="url(#arrowblue)"/>
+  <line x1="710" y1="750" x2="710" y2="780" stroke="#2980b9" stroke-width="2" marker-end="url(#arrowblue)"/>
+  <line x1="710" y1="820" x2="470" y2="865" stroke="#2980b9" stroke-width="2" marker-end="url(#arrowblue)"/>
+  
+  <!-- Decision points -->
+  <polygon points="350,250 370,230 350,210 330,230" fill="#f1c40f" stroke="#f39c12" stroke-width="2"/>
+  <text x="350" y="225" text-anchor="middle" font-size="8">Заказ</text>
+  <text x="350" y="235" text-anchor="middle" font-size="8">готов?</text>
+  
+  <polygon points="470,320 490,300 470,280 450,300" fill="#f1c40f" stroke="#f39c12" stroke-width="2"/>
+  <text x="470" y="295" text-anchor="middle" font-size="8">Курьер</text>
+  <text x="470" y="305" text-anchor="middle" font-size="8">свободен?</text>
+  
+  <!-- Yes/No labels -->
+  <text x="380" y="220" font-size="9" fill="#27ae60">Да</text>
+  <text x="500" y="290" font-size="9" fill="#27ae60">Да</text>
+  
+  <!-- Parallel flows -->
+  <line x1="150" y1="170" x2="190" y2="240" stroke="#e74c3c" stroke-width="2" stroke-dasharray="3,3"/>
+  <text x="170" y="205" text-anchor="middle" font-size="8" fill="#e74c3c">уведомление</text>
+  
+  <line x1="390" y1="310" x2="430" y2="380" stroke="#e74c3c" stroke-width="2" stroke-dasharray="3,3"/>
+  <text x="410" y="345" text-anchor="middle" font-size="8" fill="#e74c3c">назначение</text>
+  
+  <!-- Back to supplier flow -->
+  <line x1="430" y1="450" x2="150" y2="450" stroke="#8e44ad" stroke-width="2" stroke-dasharray="5,5"/>
+  <text x="290" y="445" text-anchor="middle" font-size="8" fill="#8e44ad">подтверждение получения</text>
+  
+  <!-- Legend -->
+  <rect x="800" y="150" width="250" height="180" fill="#f8f9fa" stroke="#333" stroke-width="1"/>
+  <text x="810" y="170" font-size="12" font-weight="bold">Легенда:</text>
+  <rect x="810" y="180" width="20" height="15" fill="#3498db" stroke="#2980b9"/>
+  <text x="835" y="190" font-size="10">Действия поставщика</text>
+  <rect x="810" y="200" width="20" height="15" fill="#e67e22" stroke="#d35400"/>
+  <text x="835" y="210" font-size="10">Действия оператора</text>
+  <rect x="810" y="220" width="20" height="15" fill="#1abc9c" stroke="#16a085"/>
+  <text x="835" y="230" font-size="10">Действия диспетчера</text>
+  <rect x="810" y="240" width="20" height="15" fill="#9b59b6" stroke="#8e44ad"/>
+  <text x="835" y="250" font-size="10">Действия курьера</text>
+  <rect x="810" y="260" width="20" height="15" fill="#f39c12" stroke="#e67e22"/>
+  <text x="835" y="270" font-size="10">Действия клиента</text>
+  <rect x="810" y="280" width="20" height="15" fill="#34495e" stroke="#2c3e50"/>
+  <text x="835" y="290" font-size="10">Действия бухгалтерии</text>
+  <polygon points="810,300 820,295 810,290 800,295" fill="#f1c40f" stroke="#f39c12"/>
+  <text x="825" y="297" font-size="10">Решение</text>
+  <line x1="810" y1="310" x2="830" y2="310" stroke="#e74c3c" stroke-width="2" stroke-dasharray="3,3"/>
+  <text x="835" y="313" font-size="10">Уведомление</text>
+</svg>
