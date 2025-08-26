@@ -1,0 +1,139 @@
+<svg viewBox="0 0 1400 900" xmlns="http://www.w3.org/2000/svg">
+  <!-- Title -->
+  <text x="700" y="30" text-anchor="middle" font-size="20" font-weight="bold" fill="#2c3e50">
+    Swimlane диаграмма: Процесс записи на услугу
+  </text>
+  
+  <!-- Swim lanes headers -->
+  <rect x="50" y="60" width="120" height="800" fill="#ecf0f1" stroke="#34495e" stroke-width="2"/>
+  <text x="110" y="85" text-anchor="middle" font-size="14" font-weight="bold">Клиент</text>
+  
+  <rect x="170" y="60" width="120" height="800" fill="#fdf2e9" stroke="#34495e" stroke-width="2"/>
+  <text x="230" y="85" text-anchor="middle" font-size="14" font-weight="bold">Система</text>
+  
+  <rect x="290" y="60" width="120" height="800" fill="#e8f8f5" stroke="#34495e" stroke-width="2"/>
+  <text x="350" y="85" text-anchor="middle" font-size="14" font-weight="bold">Менеджер</text>
+  
+  <rect x="410" y="60" width="120" height="800" fill="#eaf2f8" stroke="#34495e" stroke-width="2"/>
+  <text x="470" y="85" text-anchor="middle" font-size="14" font-weight="bold">Мастер</text>
+  
+  <rect x="530" y="60" width="120" height="800" fill="#fdf2e9" stroke="#34495e" stroke-width="2"/>
+  <text x="590" y="85" text-anchor="middle" font-size="14" font-weight="bold">Бухгалтерия</text>
+  
+  <!-- Start -->
+  <circle cx="110" cy="120" r="15" fill="#27ae60" stroke="#1e8449" stroke-width="2"/>
+  <text x="135" y="125" font-size="10">Начало</text>
+  
+  <!-- Process steps -->
+  <!-- Step 1: Client chooses service -->
+  <rect x="70" y="150" width="80" height="40" fill="#3498db" stroke="#2980b9" stroke-width="2" rx="5"/>
+  <text x="110" y="168" text-anchor="middle" font-size="10" fill="white">Выбор услуги</text>
+  <text x="110" y="180" text-anchor="middle" font-size="10" fill="white">и мастера</text>
+  
+  <!-- Step 2: System checks availability -->
+  <rect x="190" y="220" width="80" height="40" fill="#e67e22" stroke="#d35400" stroke-width="2" rx="5"/>
+  <text x="230" y="238" text-anchor="middle" font-size="10" fill="white">Проверка</text>
+  <text x="230" y="250" text-anchor="middle" font-size="10" fill="white">доступности</text>
+  
+  <!-- Step 3: Client enters contact data -->
+  <rect x="70" y="290" width="80" height="40" fill="#3498db" stroke="#2980b9" stroke-width="2" rx="5"/>
+  <text x="110" y="308" text-anchor="middle" font-size="10" fill="white">Ввод</text>
+  <text x="110" y="320" text-anchor="middle" font-size="10" fill="white">контактов</text>
+  
+  <!-- Step 4: System creates booking -->
+  <rect x="190" y="360" width="80" height="40" fill="#e67e22" stroke="#d35400" stroke-width="2" rx="5"/>
+  <text x="230" y="378" text-anchor="middle" font-size="10" fill="white">Создание</text>
+  <text x="230" y="390" text-anchor="middle" font-size="10" fill="white">записи</text>
+  
+  <!-- Step 5: System sends confirmation -->
+  <rect x="190" y="430" width="80" height="40" fill="#e67e22" stroke="#d35400" stroke-width="2" rx="5"/>
+  <text x="230" y="448" text-anchor="middle" font-size="10" fill="white">Отправка</text>
+  <text x="230" y="460" text-anchor="middle" font-size="10" fill="white">подтверждения</text>
+  
+  <!-- Step 6: System sends reminder -->
+  <rect x="190" y="500" width="80" height="40" fill="#e67e22" stroke="#d35400" stroke-width="2" rx="5"/>
+  <text x="230" y="518" text-anchor="middle" font-size="10" fill="white">Отправка</text>
+  <text x="230" y="530" text-anchor="middle" font-size="10" fill="white">напоминания</text>
+  
+  <!-- Step 7: Master provides service -->
+  <rect x="430" y="570" width="80" height="40" fill="#9b59b6" stroke="#8e44ad" stroke-width="2" rx="5"/>
+  <text x="470" y="588" text-anchor="middle" font-size="10" fill="white">Оказание</text>
+  <text x="470" y="600" text-anchor="middle" font-size="10" fill="white">услуги</text>
+  
+  <!-- Step 8: Manager marks completion -->
+  <rect x="310" y="640" width="80" height="40" fill="#1abc9c" stroke="#16a085" stroke-width="2" rx="5"/>
+  <text x="350" y="658" text-anchor="middle" font-size="10" fill="white">Отметка о</text>
+  <text x="350" y="670" text-anchor="middle" font-size="10" fill="white">выполнении</text>
+  
+  <!-- Step 9: Manager processes payment -->
+  <rect x="310" y="710" width="80" height="40" fill="#1abc9c" stroke="#16a085" stroke-width="2" rx="5"/>
+  <text x="350" y="728" text-anchor="middle" font-size="10" fill="white">Начисление</text>
+  <text x="350" y="740" text-anchor="middle" font-size="10" fill="white">оплаты</text>
+  
+  <!-- Step 10: Accounting receives payment data -->
+  <rect x="550" y="710" width="80" height="40" fill="#f39c12" stroke="#e67e22" stroke-width="2" rx="5"/>
+  <text x="590" y="728" text-anchor="middle" font-size="10" fill="white">Получение</text>
+  <text x="590" y="740" text-anchor="middle" font-size="10" fill="white">данных</text>
+  
+  <!-- Step 11: System requests rating -->
+  <rect x="190" y="780" width="80" height="40" fill="#e67e22" stroke="#d35400" stroke-width="2" rx="5"/>
+  <text x="230" y="798" text-anchor="middle" font-size="10" fill="white">Запрос</text>
+  <text x="230" y="810" text-anchor="middle" font-size="10" fill="white">оценки</text>
+  
+  <!-- Step 12: Client provides rating -->
+  <rect x="70" y="780" width="80" height="40" fill="#3498db" stroke="#2980b9" stroke-width="2" rx="5"/>
+  <text x="110" y="798" text-anchor="middle" font-size="10" fill="white">Оценка</text>
+  <text x="110" y="810" text-anchor="middle" font-size="10" fill="white">и отзыв</text>
+  
+  <!-- End -->
+  <circle cx="110" cy="850" r="15" fill="#e74c3c" stroke="#c0392b" stroke-width="2"/>
+  <text x="135" y="855" font-size="10">Конец</text>
+  
+  <!-- Arrows -->
+  <defs>
+    <marker id="arrowblue" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#2980b9"/>
+    </marker>
+  </defs>
+  
+  <!-- Flow arrows -->
+  <line x1="110" y1="135" x2="110" y2="150" stroke="#2980b9" stroke-width="2" marker-end="url(#arrowblue)"/>
+  <line x1="110" y1="190" x2="230" y2="220" stroke="#2980b9" stroke-width="2" marker-end="url(#arrowblue)"/>
+  <line x1="230" y1="260" x2="110" y2="290" stroke="#2980b9" stroke-width="2" marker-end="url(#arrowblue)"/>
+  <line x1="110" y1="330" x2="230" y2="360" stroke="#2980b9" stroke-width="2" marker-end="url(#arrowblue)"/>
+  <line x1="230" y1="400" x2="230" y2="430" stroke="#2980b9" stroke-width="2" marker-end="url(#arrowblue)"/>
+  <line x1="230" y1="470" x2="230" y2="500" stroke="#2980b9" stroke-width="2" marker-end="url(#arrowblue)"/>
+  <line x1="230" y1="540" x2="470" y2="570" stroke="#2980b9" stroke-width="2" marker-end="url(#arrowblue)"/>
+  <line x1="470" y1="610" x2="350" y2="640" stroke="#2980b9" stroke-width="2" marker-end="url(#arrowblue)"/>
+  <line x1="350" y1="680" x2="350" y2="710" stroke="#2980b9" stroke-width="2" marker-end="url(#arrowblue)"/>
+  <line x1="390" y1="730" x2="550" y2="730" stroke="#2980b9" stroke-width="2" marker-end="url(#arrowblue)"/>
+  <line x1="270" y1="800" x2="150" y2="800" stroke="#2980b9" stroke-width="2" marker-end="url(#arrowblue)"/>
+  <line x1="110" y1="820" x2="110" y2="835" stroke="#2980b9" stroke-width="2" marker-end="url(#arrowblue)"/>
+  
+  <!-- Back to client arrows -->
+  <line x1="190" y1="450" x2="150" y2="450" stroke="#e74c3c" stroke-width="2" stroke-dasharray="5,5"/>
+  <line x1="190" y1="520" x2="150" y2="520" stroke="#e74c3c" stroke-width="2" stroke-dasharray="5,5"/>
+  
+  <!-- Decision points -->
+  <polygon points="230,280 250,260 230,240 210,260" fill="#f1c40f" stroke="#f39c12" stroke-width="2"/>
+  <text x="230" y="265" text-anchor="middle" font-size="8">Время</text>
+  <text x="230" y="275" text-anchor="middle" font-size="8">свободно?</text>
+  
+  <!-- Yes/No labels -->
+  <text x="280" y="250" font-size="9" fill="#27ae60">Да</text>
+  <text x="180" y="250" font-size="9" fill="#e74c3c">Нет</text>
+  
+  <!-- Legend -->
+  <rect x="700" y="100" width="250" height="120" fill="#f8f9fa" stroke="#333" stroke-width="1"/>
+  <text x="710" y="115" font-size="12" font-weight="bold">Легенда:</text>
+  <rect x="710" y="125" width="20" height="15" fill="#3498db" stroke="#2980b9"/>
+  <text x="735" y="135" font-size="10">Действия клиента</text>
+  <rect x="710" y="145" width="20" height="15" fill="#e67e22" stroke="#d35400"/>
+  <text x="735" y="155" font-size="10">Действия системы</text>
+  <rect x="710" y="165" width="20" height="15" fill="#1abc9c" stroke="#16a085"/>
+  <text x="735" y="175" font-size="10">Действия менеджера</text>
+  <rect x="710" y="185" width="20" height="15" fill="#9b59b6" stroke="#8e44ad"/>
+  <text x="735" y="195" font-size="10">Действия мастера</text>
+  <polygon points="710,205 720,200 710,195 700,200" fill="#f1c40f" stroke="#f39c12"/>
+  <text x="725" y="202" font-size="10">Решение</text>
+</svg>

@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Визуализация WSDL файлов - BSA16_SOAP</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #2c3e50, #3498db);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .subtitle {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .service-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .service-card {
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            border-left: 5px solid;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-card.member {
+            border-left-color: #e74c3c;
+        }
+
+        .service-card.pet {
+            border-left-color: #27ae60;
+        }
+
+        .service-title {
+            font-size: 1.8em;
+            font-weight: bold;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .service-card.member .service-title {
+            color: #e74c3c;
+        }
+
+        .service-card.pet .service-title {
+            color: #27ae60;
+        }
+
+        .service-info {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .operations-grid {
+            display: grid;
+            gap: 15px;
+        }
+
+        .operation {
+            background: #fff;
+            border: 2px solid #ecf0f1;
+            border-radius: 10px;
+            padding: 15px;
+            transition: border-color 0.3s ease;
+        }
+
+        .operation:hover {
+            border-color: #3498db;
+        }
+
+        .operation-name {
+            font-weight: bold;
+            font-size: 1.1em;
+            margin-bottom: 8px;
+            color: #2c3e50;
+        }
+
+        .operation-desc {
+            color: #7f8c8d;
+            font-size: 0.9em;
+            line-height: 1.4;
+        }
+
+        .schema-section {
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            margin-bottom: 30px;
+            border-left: 5px solid #9b59b6;
+        }
+
+        .schema-title {
+            font-size: 1.8em;
+            color: #9b59b6;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .type-card {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-left: 3px solid #9b59b6;
+        }
+
+        .type-name {
+            font-weight: bold;
+            font-size: 1.2em;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .fields-list {
+            list-style: none;
+            padding-left: 20px;
+        }
+
+        .fields-list li {
+            padding: 5px 0;
+            border-bottom: 1px solid #ecf0f1;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .field-name {
+            font-weight: 500;
+            color: #34495e;
+        }
+
+        .field-type {
+            background: #3498db;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.8em;
+        }
+
+        .field-optional {
+            background: #f39c12;
+        }
+
+        .endpoints-section {
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: white;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .endpoints-title {
+            font-size: 1.8em;
+            margin-bottom: 20px;
+        }
+
+        .endpoint-item {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 15px;
+            margin: 10px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .endpoint-name {
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+
+        .endpoint-url {
+            font-family: 'Courier New', monospace;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+
+        .tabs {
+            display: flex;
+            background: #ecf0f1;
+            border-radius: 10px 10px 0 0;
+            overflow: hidden;
+        }
+
+        .tab {
+            flex: 1;
+            padding: 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-weight: bold;
+        }
+
+        .tab:hover {
+            background: #d5dbdb;
+        }
+
+        .tab.active {
+            background: #3498db;
+            color: white;
+        }
+
+        .tab-content {
+            display: none;
+            padding: 30px;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .service-container {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📊 Визуализация WSDL файлов</h1>
+            <p class="subtitle">Проект BSA16_SOAP - Клуб любителей домашних животных</p>
+        </div>
+
+        <div class="content">
+            <div class="tabs">
+                <div class="tab active" onclick="showTab('services')">🔧 Сервисы и операции</div>
+                <div class="tab" onclick="showTab('schemas')">📋 Схемы данных</div>
+                <div class="tab" onclick="showTab('endpoints')">🌐 Endpoints</div>
+            </div>
+
+            <div id="services" class="tab-content active">
+                <div class="service-container">
+                    <div class="service-card member">
+                        <div class="service-title">
+                            👥 Member Service
+                        </div>
+                        <div class="service-info">
+                            <strong>Назначение:</strong> Управление участниками клуба любителей животных<br>
+                            <strong>Namespace:</strong> http://petloversclub.ru/memberService/member.wsdl
+                        </div>
+                        <div class="operations-grid">
+                            <div class="operation">
+                                <div class="operation-name">AddMember</div>
+                                <div class="operation-desc">Добавляет нового участника в клуб</div>
+                            </div>
+                            <div class="operation">
+                                <div class="operation-name">GetAllMembers</div>
+                                <div class="operation-desc">Получает список всех участников клуба</div>
+                            </div>
+                            <div class="operation">
+                                <div class="operation-name">GetMemberByName</div>
+                                <div class="operation-desc">Находит участника по имени</div>
+                            </div>
+                            <div class="operation">
+                                <div class="operation-name">UpdateMember</div>
+                                <div class="operation-desc">Обновляет информацию об участнике</div>
+                            </div>
+                            <div class="operation">
+                                <div class="operation-name">DeleteMember</div>
+                                <div class="operation-desc">Удаляет участника из клуба</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="service-card pet">
+                        <div class="service-title">
+                            🐾 Pet Service
+                        </div>
+                        <div class="service-info">
+                            <strong>Назначение:</strong> Управление питомцами участников клуба<br>
+                            <strong>Namespace:</strong> http://petloversclub.ru/petService/pet.wsdl
+                        </div>
+                        <div class="operations-grid">
+                            <div class="operation">
+                                <div class="operation-name">AddPet</div>
+                                <div class="operation-desc">Добавляет нового питомца</div>
+                            </div>
+                            <div class="operation">
+                                <div class="operation-name">GetAllPets</div>
+                                <div class="operation-desc">Получает список всех питомцев</div>
+                            </div>
+                            <div class="operation">
+                                <div class="operation-name">GetPetsByMemberId</div>
+                                <div class="operation-desc">Получает питомцев конкретного владельца</div>
+                            </div>
+                            <div class="operation">
+                                <div class="operation-name">UpdatePet</div>
+                                <div class="operation-desc">Обновляет информацию о питомце</div>
+                            </div>
+                            <div class="operation">
+                                <div class="operation-name">DeletePet</div>
+                                <div class="operation-desc">Удаляет питомца из базы</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="schemas" class="tab-content">
+                <div class="schema-section">
+                    <div class="schema-title">
+                        📊 Схемы данных XSD
+                    </div>
+
+                    <div class="type-card">
+                        <div class="type-name">👤 Member (Участник)</div>
+                        <ul class="fields-list">
+                            <li>
+                                <span class="field-name">id</span>
+                                <span class="field-type">int</span>
+                            </li>
+                            <li>
+                                <span class="field-name">name</span>
+                                <span class="field-type">string</span>
+                            </li>
+                            <li>
+                                <span class="field-name">email</span>
+                                <span class="field-type">string</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="type-card">
+                        <div class="type-name">📝 MemberDataInput (Ввод данных участника)</div>
+                        <ul class="fields-list">
+                            <li>
+                                <span class="field-name">id</span>
+                                <span class="field-type field-optional">int (optional)</span>
+                            </li>
+                            <li>
+                                <span class="field-name">name</span>
+                                <span class="field-type">string</span>
+                            </li>
+                            <li>
+                                <span class="field-name">email</span>
+                                <span class="field-type">string</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="type-card">
+                        <div class="type-name">🐾 Pet (Питомец)</div>
+                        <ul class="fields-list">
+                            <li>
+                                <span class="field-name">id</span>
+                                <span class="field-type">int</span>
+                            </li>
+                            <li>
+                                <span class="field-name">member_id</span>
+                                <span class="field-type">int</span>
+                            </li>
+                            <li>
+                                <span class="field-name">name</span>
+                                <span class="field-type">string</span>
+                            </li>
+                            <li>
+                                <span class="field-name">kind</span>
+                                <span class="field-type">string</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="type-card">
+                        <div class="type-name">📝 PetDataInput (Ввод данных питомца)</div>
+                        <ul class="fields-list">
+                            <li>
+                                <span class="field-name">id</span>
+                                <span class="field-type field-optional">int (optional)</span>
+                            </li>
+                            <li>
+                                <span class="field-name">name</span>
+                                <span class="field-type">string</span>
+                            </li>
+                            <li>
+                                <span class="field-name">kind</span>
+                                <span class="field-type">string</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="type-card">
+                        <div class="type-name">📋 List Types (Списочные типы)</div>
+                        <ul class="fields-list">
+                            <li>
+                                <span class="field-name">MemberList</span>
+                                <span class="field-type">Member[] (0..unbounded)</span>
+                            </li>
+                            <li>
+                                <span class="field-name">PetList</span>
+                                <span class="field-type">Pet[] (0..unbounded)</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div id="endpoints" class="tab-content">
+                <div class="endpoints-section">
+                    <div class="endpoints-title">🌐 Endpoints веб-сервисов</div>
+                    
+                    <div class="endpoint-item">
+                        <div class="endpoint-name">👥 Member Service</div>
+                        <div class="endpoint-url">http://petloversclub.ru/memberService</div>
+                    </div>
+                    
+                    <div class="endpoint-item">
+                        <div class="endpoint-name">🐾 Pet Service</div>
+                        <div class="endpoint-url">http://petloversclub.ru/petService</div>
+                    </div>
+
+                    <p style="margin-top: 20px; opacity: 0.8; font-size: 0.9em;">
+                        💡 Оба сервиса используют SOAP 1.1 binding с document/literal стилем
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showTab(tabName) {
+            // Скрыть все табы
+            const tabs = document.querySelectorAll('.tab');
+            const contents = document.querySelectorAll('.tab-content');
+            
+            tabs.forEach(tab => tab.classList.remove('active'));
+            contents.forEach(content => content.classList.remove('active'));
+            
+            // Показать выбранный таб
+            event.target.classList.add('active');
+            document.getElementById(tabName).classList.add('active');
+        }
+
+        // Добавляем анимацию при загрузке
+        window.addEventListener('load', function() {
+            const cards = document.querySelectorAll('.service-card, .schema-section, .type-card');
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                setTimeout(() => {
+                    card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, index * 100);
+            });
+        });
+    </script>
+</body>
+</html>

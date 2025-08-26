@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BPMN BP2: Оказание услуги клиенту</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f8f9fa;
+        }
+        .bpmn-container {
+            background-color: white;
+            border: 2px solid #2c3e50;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 1200px;
+            overflow-x: auto;
+        }
+        .bpmn-header {
+            background-color: #e67e22;
+            color: white;
+            padding: 10px 15px;
+            margin: -20px -20px 20px -20px;
+            border-radius: 6px 6px 0 0;
+        }
+        .lane {
+            border: 2px solid #7f8c8d;
+            margin: 10px 0;
+            min-height: 120px;
+            position: relative;
+            background-color: #fdf4e3;
+        }
+        .lane-label {
+            position: absolute;
+            left: 0;
+            top: 0;
+            background-color: #d35400;
+            color: white;
+            padding: 5px 10px;
+            writing-mode: vertical-lr;
+            text-orientation: mixed;
+            font-weight: bold;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 80px;
+        }
+        .lane-content {
+            margin-left: 90px;
+            padding: 20px;
+            min-height: 80px;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        .bpmn-element {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            text-align: center;
+            line-height: 1.2;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .start-event, .end-event, .intermediate-event {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            border: 2px solid #27ae60;
+            background-color: #2ecc71;
+            color: white;
+            font-weight: bold;
+        }
+        .intermediate-event {
+            border: 3px solid #f39c12;
+            background-color: #f1c40f;
+            color: #2c3e50;
+        }
+        .end-event {
+            border: 4px solid #e74c3c;
+            background-color: #c0392b;
+        }
+        .task {
+            width: 100px;
+            height: 60px;
+            border: 2px solid #e67e22;
+            border-radius: 8px;
+            background-color: #fdf2e9;
+            padding: 5px;
+            box-sizing: border-box;
+        }
+        .data-object {
+            width: 80px;
+            height: 50px;
+            border: 2px solid #9b59b6;
+            background-color: #e8d5e8;
+            position: relative;
+            clip-path: polygon(0 0, 85% 0, 100% 15%, 100% 100%, 0 100%);
+        }
+        .arrow {
+            margin: 0 5px;
+            font-size: 16px;
+            color: #2c3e50;
+        }
+        .message-flow {
+            border-top: 2px dashed #e74c3c;
+            width: 100%;
+            position: relative;
+            margin: 10px 0;
+        }
+        .message-flow::after {
+            content: "📋";
+            position: absolute;
+            right: 10px;
+            top: -15px;
+            background-color: white;
+            padding: 2px;
+        }
+        .bpmn-element:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        .legend {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+            border-left: 4px solid #e67e22;
+        }
+        .legend-item {
+            display: inline-block;
+            margin: 5px 15px 5px 0;
+            font-size: 12px;
+        }
+        .legend-symbol {
+            display: inline-block;
+            margin-right: 5px;
+            vertical-align: middle;
+        }
+        .process-info {
+            background-color: #fef5e7;
+            border-left: 4px solid #e67e22;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        .parallel-flow {
+            border-left: 3px solid #3498db;
+            padding-left: 15px;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="bpmn-container">
+        <div class="bpmn-header">
+            <h2>BP2: Оказание услуги клиенту</h2>
+            <p><strong>Владелец:</strong> Мастер (Петров П.П.) | <strong>ID:</strong> BP2</p>
+        </div>
+
+        <div class="process-info">
+            <h3>Цель процесса:</h3>
+            <p>Качественное оказание услуги клиенту с фиксацией результата в системе</p>
+        </div>
+
+        <!-- Дорожка Клиент -->
+        <div class="lane">
+            <div class="lane-label">КЛИЕНТ</div>
+            <div class="lane-content">
+                <div class="bpmn-element intermediate-event" title="Время записи наступило">⏰</div>
+                <span class="arrow">→</span>
+                <div class="bpmn-element task" title="Клиент приходит в назначенное время">Прибытие<br>в салон</div>
+                <span class="arrow">→</span>
+                <div class="bpmn-element task" title="Клиент получает услугу">Получение<br>услуги</div>
+                <span class="arrow">→</span>
+                <div class="bpmn-element task" title="Клиент оценивает результат">Оценка<br>результата</div>
+                <span class="arrow">→</span>
+                <div class="bpmn-element end-event" title="Конечное событие: Клиент доволен">😊</div>
+            </div>
+        </div>
+
+        <!-- Дорожка Мастер -->
+        <div class="lane">
+            <div class="lane-label">МАСТЕР</div>
+            <div class="lane-content">
+                <div class="bpmn-element start-event" title="Начальное событие: Время приема">START</div>
+                <span class="arrow">→</span>
+                <div class="bpmn-element task" title="Мастер встречает клиента">Встреча<br>клиента</div>
+                <span class="arrow">→</span>
+                <div class="bpmn-element task" title="Консультация по услуге">Консультация</div>
+                <span class="arrow">→</span>
+                <div class="bpmn-element task" title="Выполнение парикмахерской/косметологической услуги">Выполнение<br>услуги</div>
+                <span class="arrow">→</span>
+                <div class="bpmn-element task" title="Демонстрация результата">Показ<br>результата</div>
+                <span class="arrow">→</span>
+                <div class="bpmn-element task" title="Проводы клиента">Проводы<br>клиента</div>
+            </div>
+        </div>
+
+        <!-- Дорожка Система -->
+        <div class="lane">
+            <div class="lane-label">СИСТЕМА</div>
+            <div class="lane-content">
+                <div class="bpmn-element data-object" title="Информация о записи">Данные<br>записи</div>
+                <span class="arrow">→</span>
+                <div class="bpmn-element task" title="Фиксация начала услуги">Отметка<br>начала</div>
+                <span class="arrow">→</span>
+                <div class="bpmn-element data-object" title="Протокол выполнения">Протокол<br>услуги</div>
+                <span class="arrow">→</span>
+                <div class="bpmn-element task" title="Отметка завершения услуги">Отметка<br>завершения</div>
+                <span class="arrow">→</span>
+                <div class="bpmn-element intermediate-event" title="Инициирование процессов оплаты и отзывов">📤</div>
+            </div>
+        </div>
+
+        <!-- Дорожка Менеджер -->
+        <div class="lane">
+            <div class="lane-label">МЕНЕДЖЕР</div>
+            <div class="lane-content">
+                <div class="bpmn-element task" title="Контроль качества услуги">Контроль<br>качества</div>
+                <span class="arrow">→</span>
+                <div class="bpmn-element task" title="Фиксация в журнале">Журнал<br>услуг</div>
+                <span class="arrow">→</span>
+                <div class="bpmn-element data-object" title="Отчет о выполненных услугах">Отчет<br>услуг</div>
+            </div>
+        </div>
+
+        <!-- Потоки сообщений -->
+        <div class="message-flow"></div>
+
+        <div class="legend">
+            <h3>Легенда элементов BPMN:</h3>
+            <div class="legend-item">
+                <span class="legend-symbol" style="display: inline-block; width: 20px; height: 20px; border-radius: 50%; background-color: #2ecc71; border: 2px solid #27ae60;"></span>
+                Начальное событие
+            </div>
+            <div class="legend-item">
+                <span class="legend-symbol" style="display: inline-block; width: 20px; height: 20px; border-radius: 50%; background-color: #f1c40f; border: 3px solid #f39c12;"></span>
+                Промежуточное событие
+            </div>
+            <div class="legend-item">
+                <span class="legend-symbol" style="display: inline-block; width: 20px; height: 20px; border-radius: 50%; background-color: #c0392b; border: 4px solid #e74c3c;"></span>
+                Конечное событие
+            </div>
+            <div class="legend-item">
+                <span class="legend-symbol" style="display: inline-block; width: 40px; height: 20px; background-color: #fdf2e9; border: 2px solid #e67e22; border-radius: 3px;"></span>
+                Задача/Активность
+            </div>
+            <div class="legend-item">
+                <span class="legend-symbol" style="display: inline-block; width: 30px; height: 20px; background-color: #e8d5e8; border: 2px solid #9b59b6; clip-path: polygon(0 0, 85% 0, 100% 15%, 100% 100%, 0 100%);"></span>
+                Объект данных
+            </div>
+        </div>
+
+        <div class="process-info">
+            <h3>Ключевые особенности процесса:</h3>
+            <ul>
+                <li><strong>Временная привязка:</strong> Процесс запускается по времени записи</li>
+                <li><strong>Качество:</strong> Контроль качества менеджером на всех этапах</li>
+                <li><strong>Документирование:</strong> Все этапы фиксируются в системе</li>
+                <li><strong>Инициирование следующих процессов:</strong> После завершения автоматически запускаются процессы оплаты и сбора отзывов</li>
+                <li><strong>Клиентоориентированность:</strong> Особое внимание к консультации и демонстрации результата</li>
+            </ul>
+        </div>
+
+        <div class="process-info">
+            <h3>Связи с другими процессами:</h3>
+            <ul>
+                <li><strong>Входящие:</strong> BP1 (Запись клиента) - предоставляет данные о записи</li>
+                <li><strong>Исходящие:</strong> BP4 (Обработка платежей) - инициирует расчеты</li>
+                <li><strong>Исходящие:</strong> BP5 (Управление отзывами) - запускает сбор обратной связи</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

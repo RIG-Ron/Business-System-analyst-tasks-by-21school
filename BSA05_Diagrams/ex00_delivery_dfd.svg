@@ -1,0 +1,132 @@
+<svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+  <!-- Title -->
+  <text x="600" y="30" text-anchor="middle" font-size="20" font-weight="bold" fill="#2c3e50">
+    DFD Уровень 0: Система доставки заказов
+  </text>
+  
+  <!-- External Entities -->
+  <!-- Supplier -->
+  <rect x="50" y="150" width="120" height="60" fill="#e8f5e8" stroke="#2d5016" stroke-width="2"/>
+  <text x="110" y="175" text-anchor="middle" font-size="12" font-weight="bold">Поставщик</text>
+  <text x="110" y="190" text-anchor="middle" font-size="10">(магазины, кафе)</text>
+  
+  <!-- Courier -->
+  <rect x="50" y="400" width="120" height="60" fill="#e8f5e8" stroke="#2d5016" stroke-width="2"/>
+  <text x="110" y="425" text-anchor="middle" font-size="12" font-weight="bold">Курьер</text>
+  
+  <!-- Client -->
+  <rect x="50" y="650" width="120" height="60" fill="#e8f5e8" stroke="#2d5016" stroke-width="2"/>
+  <text x="110" y="675" text-anchor="middle" font-size="12" font-weight="bold">Клиент</text>
+  <text x="110" y="690" text-anchor="middle" font-size="10">(получатель)</text>
+  
+  <!-- Accounting -->
+  <rect x="1030" y="400" width="120" height="60" fill="#e8f5e8" stroke="#2d5016" stroke-width="2"/>
+  <text x="1090" y="425" text-anchor="middle" font-size="12" font-weight="bold">Бухгалтерия</text>
+  
+  <!-- Processes -->
+  <!-- Process 1: Manage Orders -->
+  <ellipse cx="350" cy="180" rx="80" ry="40" fill="#ffeaa7" stroke="#b8860b" stroke-width="2"/>
+  <text x="350" y="175" text-anchor="middle" font-size="11" font-weight="bold">1. Управлять</text>
+  <text x="350" y="188" text-anchor="middle" font-size="11" font-weight="bold">заказами</text>
+  
+  <!-- Process 2: Assign Delivery -->
+  <ellipse cx="550" cy="300" rx="80" ry="40" fill="#ffeaa7" stroke="#b8860b" stroke-width="2"/>
+  <text x="550" y="295" text-anchor="middle" font-size="11" font-weight="bold">2. Назначать</text>
+  <text x="550" y="308" text-anchor="middle" font-size="11" font-weight="bold">доставку</text>
+  
+  <!-- Process 3: Track Delivery -->
+  <ellipse cx="350" cy="430" rx="80" ry="40" fill="#ffeaa7" stroke="#b8860b" stroke-width="2"/>
+  <text x="350" y="425" text-anchor="middle" font-size="11" font-weight="bold">3. Отслеживать</text>
+  <text x="350" y="438" text-anchor="middle" font-size="11" font-weight="bold">доставку</text>
+  
+  <!-- Process 4: Manage Couriers -->
+  <ellipse cx="550" cy="550" rx="80" ry="40" fill="#ffeaa7" stroke="#b8860b" stroke-width="2"/>
+  <text x="550" y="545" text-anchor="middle" font-size="11" font-weight="bold">4. Управлять</text>
+  <text x="550" y="558" text-anchor="middle" font-size="11" font-weight="bold">курьерами</text>
+  
+  <!-- Process 5: Calculate Payment -->
+  <ellipse cx="850" cy="400" rx="80" ry="40" fill="#ffeaa7" stroke="#b8860b" stroke-width="2"/>
+  <text x="850" y="395" text-anchor="middle" font-size="11" font-weight="bold">5. Рассчитывать</text>
+  <text x="850" y="408" text-anchor="middle" font-size="11" font-weight="bold">оплату</text>
+  
+  <!-- Data Stores -->
+  <!-- D1: Orders -->
+  <line x1="500" y1="200" x2="650" y2="200" stroke="#333" stroke-width="3"/>
+  <line x1="500" y1="220" x2="650" y2="220" stroke="#333" stroke-width="3"/>
+  <text x="575" y="215" text-anchor="middle" font-size="11" font-weight="bold">D1: Заказы</text>
+  
+  <!-- D2: Courier Data -->
+  <line x1="700" y1="550" x2="850" y2="550" stroke="#333" stroke-width="3"/>
+  <line x1="700" y1="570" x2="850" y2="570" stroke="#333" stroke-width="3"/>
+  <text x="775" y="565" text-anchor="middle" font-size="11" font-weight="bold">D2: Данные курьеров</text>
+  
+  <!-- D3: Delivery History -->
+  <line x1="200" y1="350" x2="350" y2="350" stroke="#333" stroke-width="3"/>
+  <line x1="200" y1="370" x2="350" y2="370" stroke="#333" stroke-width="3"/>
+  <text x="275" y="365" text-anchor="middle" font-size="11" font-weight="bold">D3: История доставок</text>
+  
+  <!-- D4: Payment Info -->
+  <line x1="950" y1="500" x2="1100" y2="500" stroke="#333" stroke-width="3"/>
+  <line x1="950" y1="520" x2="1100" y2="520" stroke="#333" stroke-width="3"/>
+  <text x="1025" y="515" text-anchor="middle" font-size="11" font-weight="bold">D4: Расчетная информация</text>
+  
+  <!-- Data Flows -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#2980b9"/>
+    </marker>
+  </defs>
+  
+  <!-- Supplier to Process 1 -->
+  <line x1="170" y1="170" x2="270" y2="170" stroke="#2980b9" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <text x="220" y="165" text-anchor="middle" font-size="9">информация о заказе</text>
+  
+  <!-- Process 1 to D1 -->
+  <line x1="420" y1="190" x2="500" y2="200" stroke="#2980b9" stroke-width="2" marker-end="url(#arrowhead)"/>
+  
+  <!-- D1 to Process 2 -->
+  <line x1="580" y1="220" x2="550" y2="260" stroke="#2980b9" stroke-width="2" marker-end="url(#arrowhead)"/>
+  
+  <!-- Process 2 to Courier -->
+  <line x1="470" y1="320" x2="170" y2="420" stroke="#2980b9" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <text x="320" y="365" text-anchor="middle" font-size="9">назначенный заказ</text>
+  
+  <!-- Courier to Process 3 -->
+  <line x1="170" y1="440" x2="270" y2="440" stroke="#2980b9" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <text x="220" y="435" text-anchor="middle" font-size="9">статус доставки</text>
+  
+  <!-- Process 3 to D3 -->
+  <line x1="320" y1="390" x2="280" y2="370" stroke="#2980b9" stroke-width="2" marker-end="url(#arrowhead)"/>
+  
+  <!-- Process 4 to D2 -->
+  <line x1="620" y1="560" x2="700" y2="560" stroke="#2980b9" stroke-width="2" marker-end="url(#arrowhead)"/>
+  
+  <!-- Process 5 to Accounting -->
+  <line x1="920" y1="410" x2="1030" y2="430" stroke="#2980b9" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <text x="975" y="425" text-anchor="middle" font-size="9">данные для расчетов</text>
+  
+  <!-- Process 5 to D4 -->
+  <line x1="880" y1="440" x2="950" y2="500" stroke="#2980b9" stroke-width="2" marker-end="url(#arrowhead)"/>
+  
+  <!-- Process 5 to Courier (payment) -->
+  <line x1="770" y1="420" x2="170" y2="450" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <text x="470" y="440" text-anchor="middle" font-size="9">начисленная оплата</text>
+  
+  <!-- Courier to Process 4 -->
+  <line x1="150" y1="460" x2="480" y2="540" stroke="#8e44ad" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <text x="315" y="505" text-anchor="middle" font-size="9">регистрация</text>
+  
+  <!-- Client connection -->
+  <line x1="170" y1="660" x2="320" y2="470" stroke="#e74c3c" stroke-width="2"/>
+  <text x="245" y="565" text-anchor="middle" font-size="9">получение заказа</text>
+  
+  <!-- Legend -->
+  <rect x="50" y="750" width="300" height="40" fill="#f8f9fa" stroke="#333" stroke-width="1"/>
+  <text x="60" y="765" font-size="10" font-weight="bold">Легенда:</text>
+  <rect x="60" y="770" width="15" height="10" fill="#e8f5e8" stroke="#2d5016"/>
+  <text x="80" y="778" font-size="9">Внешние сущности</text>
+  <ellipse cx="140" cy="775" rx="8" ry="5" fill="#ffeaa7" stroke="#b8860b"/>
+  <text x="155" y="778" font-size="9">Процессы</text>
+  <line x1="210" y1="775" x2="225" y2="775" stroke="#333" stroke-width="2"/>
+  <text x="230" y="778" font-size="9">Хранилища</text>
+</svg>
